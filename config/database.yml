@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: books_dev
+  pool: 5
+  username: books
+  password: password1
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: books_test
+  pool: 5
+  username: books
+  password: password1
