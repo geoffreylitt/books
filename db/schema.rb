@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170118033600) do
+ActiveRecord::Schema.define(version: 20170122045921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "intarray"
 
   create_table "books", force: :cascade do |t|
     t.string   "name"
@@ -28,6 +29,9 @@ ActiveRecord::Schema.define(version: 20170118033600) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "books_users", ["book_id", "user_id"], name: "index_books_users_on_book_id_and_user_id", unique: true, using: :btree
+  add_index "books_users", ["user_id"], name: "index_books_users_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
